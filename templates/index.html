@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- The title of the web page -->
+    <title>My Flask App</title>
+
+    <!-- Linking the external JavaScript file (script.js) -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- Linking the Tailwind CSS library for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-200 p-8 gap-4 flex flex-col items-center">
+    <!-- Heading of the page -->
+    <h1 class="text-lg">My Image Generation Gallery</h1>
+
+    <!-- Input and button section -->
+    <div class="flex flex-col w-full gap-2">
+        <!-- Input field where users type their prompts -->
+        <input type="text" id="userInput" class="text-sm py-2 px-3 rounded-md border border-slate-400"
+            placeholder="Type something...">
+
+        <!-- Loading indicator displayed while images are being generated -->
+        <div id="loadingIndicator" class="hidden w-full flex flex-col z-30 items-center justify-center">
+            <!-- Loading GIF -->
+            <img src="{{ url_for('static', filename='loading.gif') }}" class="w-20 h-20" alt="">
+            <!-- Text below the loading GIF -->
+            <p class="text-sm text-white">Now generating...</p>
+        </div>
+
+        <!-- Buttons for initiating search and image generation -->
+        <div class="flex gap-2 w-full items-center justify-center">
+            <button id="searchBtn" class="rounded-md py-2 w-20 text-sm bg-slate-400 drop-shadow-md">Search</button>
+            <button id="generateBtn" class="rounded-md py-2 w-20 text-sm bg-amber-400 drop-shadow-md">Generate</button>
+        </div>
+    </div>
+
+    <!-- Container for displaying the server's response -->
+    <div id="serverResponse" class="flex gap-2"></div>
+</body>
+</html>
